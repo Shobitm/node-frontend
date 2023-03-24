@@ -1,4 +1,5 @@
-FROM node:alpine
+#build environment
+FROM node:alpine as build 
 # Define working  directory 
 WORKDIR /user/src/app
 #Copy all Json files and packages from local to container
@@ -8,6 +9,11 @@ RUN npm install
 #Now Copy all source code from local to container
 COPY . .
 #Expose the container port
-EXPOSE 3000
 #To run the project source code
-CMD ["npm", "start"]
+RUN npm run build
+
+#production environment
+FROM nginx:stable-alpine
+COPY --from=build /user/src/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD [ "nginx","-g", "daemon off;"]
