@@ -15,11 +15,11 @@ jobs:
         with:
           path: main
       
-      - name: Checkout private tools
+      - name: Checkout second tools
         uses: actions/checkout@v4
         with:
           repository: Shobitm/nodejsNew1
-          path: nodejsNew1
+          path: second
 
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v1
