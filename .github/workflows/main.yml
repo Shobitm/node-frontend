@@ -12,12 +12,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          path: main
       
       - name: Checkout private tools
         uses: actions/checkout@v4
         with:
           repository: Shobitm/nodejsNew1
-          path: ../nodejsNew1
+          path: nodejsNew1
 
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v1
