@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Shobitm/nodejsNew1
-          path: second
+          path: nodejsNew1
 
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v1
