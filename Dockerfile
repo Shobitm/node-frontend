@@ -1,13 +1,21 @@
-FROM node:alpine
-# Define working  directory 
-WORKDIR /user/src/app
-#Copy all Json files and packages from local to container
+FROM node:alpine AS builder
+# Setting up the work directory
+WORKDIR /app
+# Installing dependencies
 COPY package*.json ./
-#Install all json packages and dependencies through npm
-RUN npm install
-#Now Copy all source code from local to container
+RUN npm ci
+# Copying all the files in our project
 COPY . .
-#Expose the container port
-EXPOSE 3000
-#To run the project source code
-CMD ["npm", "start"]
+# Building our application
+RUN npm run build
+# 2nd stage
+# Fetching the latest nginx image
+FROM nginx:alpine
+# Copying built assets from builder
+COPY --from=builder /app/build /usr/share/nginx/html
+# Copying our nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Expose port
+EXPOSE 80
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
