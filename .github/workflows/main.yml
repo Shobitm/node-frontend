@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -21,12 +20,21 @@ jobs:
           repository: Shobitm/nodejsNew1
           path: nodejsNew1
 
-      # - name: Set up Docker Buildx
-      #   uses: docker/setup-buildx-action@v1
-
       - name: run shell script
         run: |
           ls -la
           pwd
           ls -la ..
           ls -la  ../..
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: main
+      
+      - name: Running Tests
+        run: |
+          pwd
+          echo "Running Tests"
