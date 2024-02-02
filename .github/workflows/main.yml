@@ -39,6 +39,8 @@ jobs:
           pwd
           echo "Running Tests"
           helm
+          env
+          export
   push:
     runs-on: ubuntu-latest
     needs: 
