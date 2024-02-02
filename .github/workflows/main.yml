@@ -35,7 +35,6 @@ jobs:
           path: main
       
       - name: Running Tests
-        uses: azure/setup-helm@v3
         run: |
           pwd
           echo "Running Tests"
@@ -76,4 +75,4 @@ jobs:
       - name: Deploying to Prod Environment
         run: |
           pwd
-          echo "Deploying to Prod1"
+          echo "Deploying to Prod"
