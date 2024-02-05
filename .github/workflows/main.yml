@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      
 
 jobs:
   build:
@@ -22,6 +23,17 @@ jobs:
           path: nodejsNew1
 
       - name: run shell script
+        run: |
+          ls -la
+          pwd
+          ls -la ..
+          ls -la  ../..
+  win-test:
+    runs-on: windows
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: run powershell script
         run: |
           ls -la
           pwd
