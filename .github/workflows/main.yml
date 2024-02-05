@@ -35,10 +35,10 @@ jobs:
         uses: actions/checkout@v4
       - name: run powershell script
         run: |
-          ls -la
+          ls
           pwd
-          ls -la ..
-          ls -la  ../..
+          ls  ..
+          ls  ../..
   test:
     runs-on: ubuntu-latest
     steps:
